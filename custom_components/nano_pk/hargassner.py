@@ -104,7 +104,7 @@ class HargassnerDigitalParameter(HargassnerParameter):
             self._value = None
 
 
-SCAN_INTERVAL = timedelta(seconds=5)
+SCAN_INTERVAL = timedelta(seconds=20)
 
 class HargassnerBridge(Entity):
        
