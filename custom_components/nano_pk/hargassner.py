@@ -202,7 +202,7 @@ class HargassnerBridge(Entity):
                          self._writer = None
                  self._reader, self._writer = await asyncio.wait_for(asyncio.open_connection(self._hostIP, 23), timeout=BRIDGE_TIMEOUT)
                  self._connectionOK = True
-             except Exception as e:
+            except Exception as e:
                  self._errorLog += "HargassnerBridge.async_update(): Error opening connection (" + repr(e) + ")\n"
     
     @property

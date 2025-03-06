@@ -1,3 +1,6 @@
+# This is a fork!
+This is a fork from [TheRealKillaruna](https://github.com/TheRealKillaruna/nano_pk) who wrote this code. Since it seems that he has gone inactive I applied some merge requests and fixes to it to keep it working in recent HA versions. (2025 at the time of writing)
+
 # nano_pk
 Home Assistant integration of Hargassner Nano-PK pellet heating systems.
 
@@ -44,7 +47,6 @@ Apart from the provided templates for `msgformat` (see above), this configuratio
 
 ### Acknowledgements ###
 [This code](https://github.com/Jahislove/Hargassner) by @Jahislove was very helpful to understand the messages sent by the heating - thank you!
-
 
 ### Feedback ###
 You can leave feedback for this custom component in the [corresponding thread](https://community.home-assistant.io/t/hargassner-heating-integration/288568) at the Home Assistant community forum.
