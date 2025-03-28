@@ -168,10 +168,12 @@ class HargassnerBridge(Entity):
         if self._connectionOK:
             try:
                 msgReceived = False
+                msgLen = 0
                 data = await asyncio.wait_for(self._reader.read(64*1024), timeout=BRIDGE_TIMEOUT)   # read up to 64k
                 lines = data.decode().strip().split("\n")
                 for l in reversed(lines):
                     msg = l.split()[1:] # remove first field "pm"
+                    msgLen = len(msg)
                     if len(msg) != self._expectedMsgLength:
                         continue
                     for param in self._paramData.values():
@@ -181,7 +183,7 @@ class HargassnerBridge(Entity):
                     self._missedMsgs = 0
                     break
                 if not msgReceived:
-                    self._errorLog += "HargassnerBridge._update(): Received message has unexpected length.\n"
+                    self._errorLog += "HargassnerBridge._update(): Received message has unexpected length. (Should: "+str(self._expectedMsgLength)+" / Is: "+str(msgLen)+")\n"
                     self._missedMsgs += 1
                     if self._missedMsgs > 10: self._connectionOK = False    # reconnect if too many errors
             except Exception as e:
